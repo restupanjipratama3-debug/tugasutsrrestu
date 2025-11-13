@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Restu Panji Pratama</title>
+  <!-- Font Awesome untuk ikon sosial media -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #877c8c, #85919c);
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      background-color: #2c3e50;
+      padding: 15px 20px;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .navbar a:hover {
+      background-color: #34495e;
+    }
+
+    .navbar a.active {
+      background-color: #fffb06;
+      color: #2c3e50;
+    }
+
+    /* Konten utama */
+    .main {
+      padding: 20px;
+      transition: opacity 0.5s ease;
+      opacity: 1;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    /* Foto profil */
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 15px auto;
+      border: 3px solid #2c3e50;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Ikon sosial media */
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      margin-right: 15px;
+      color: #2c3e50;
+      font-size: 1.8em;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #fffb06;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a class="active" onclick="showContent('home', this)">Home</a>
+    <a onclick="showContent('about', this)">About</a>
+    <a onclick="showContent('pengalaman', this)">Pendidikan</a>
+    <a onclick="showContent('contact', this)">Contact</a>
+  </div>
+
+  <!-- Konten utama -->
+  <div class="main" id="main-content">
+    <h1>Selamat Datang di Dashboard</h1>
+    <div class="card">
+      <h3>Informasi Dasar</h3>
+      <p>
+        Web ini adalah dashboard sederhana berbasis HTML, CSS, dan JavaScript. 
+        Dashboard ini menampilkan konten interaktif yang dapat berganti sesuai 
+        tombol yang diklik di navbar atas tanpa memuat ulang halaman (single-page interface sederhana).
+        Web ini dibuat untuk menampilkan data atau informasi dasar secara interaktif dan mudah diakses, 
+        cocok untuk belajar membuat dashboard sederhana atau demo portofolio.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function showContent(page, element) {
+      const main = document.getElementById('main-content');
+
+      // Hapus class active dari semua tombol
+      document.querySelectorAll('.navbar a').forEach(a => a.classList.remove('active'));
+      // Tambahkan class active ke tombol yang diklik
+      element.classList.add('active');
+      // Tambahkan efek fade
+      main.classList.add('fade-out');
+
+      setTimeout(() => {
+        if (page === 'home') {
+          main.innerHTML = `
+            <h1>Selamat Datang di Dashboard</h1>
+            <div class="card">
+              <h3>Informasi Dasar</h3>
+              <p>
+                Web ini adalah dashboard sederhana berbasis HTML, CSS, dan JavaScript. 
+                Dashboard ini menampilkan konten interaktif yang dapat berganti sesuai 
+                tombol yang diklik di navbar atas tanpa memuat ulang halaman (single-page interface sederhana).
+                Web ini dibuat untuk menampilkan data atau informasi dasar secara interaktif dan mudah diakses, 
+                cocok untuk belajar membuat dashboard sederhana atau demo portofolio.
+              </p>
+            </div>
+          `;
+        } else if (page === 'about') {
+          main.innerHTML = `
+            <h1>Tentang Saya</h1>
+            <div class="card" style="text-align:center;">
+              <<img src="foto-restu.jpeg" alt="Foto Restu Panji Pratama" class="profile-photo">
+              <p><strong>Nama:</strong> Restu Panji Pratama</p>
+              <p><strong>Bidang:</strong> Teknologi Informasi (IT) / Web Development</p>
+              <p>
+                Saya adalah seorang pembelajar dan pengembang web yang memiliki minat besar dalam pembuatan website interaktif 
+                menggunakan HTML, CSS, dan JavaScript. Saya berfokus pada tampilan sederhana namun elegan serta 
+                pengalaman pengguna yang menyenangkan.
+              </p>
+              <h4>Keahlian Utama:</h4>
+              <ul style="text-align:left; display:inline-block;">
+                <li>HTML & CSS: Membuat struktur dan desain halaman web.</li>
+                <li>JavaScript: Menambahkan interaksi dinamis dan animasi.</li>
+                <li>Responsive Design: Menyesuaikan tampilan di berbagai perangkat.</li>
+                <li>UI/UX Dasar: Menciptakan antarmuka yang ramah pengguna.</li>
+              </ul>
+            </div>
+          `;
+        } else if (page === 'pengalaman') {
+          main.innerHTML = `
+            <h1>Pendidikan</h1>
+            <div class="card">
+              <ul>
+                <li><strong>SDN 6 Ranometo Barat</strong> — Sekolah Dasar tempat saya menempuh pendidikan awal dan membangun dasar pengetahuan serta kedisiplinan.</li>
+                <li><strong>SMP Mahaputra Tello Makassar</strong> — Sekolah Menengah Pertama di mana saya mulai aktif dalam kegiatan teknologi dan komputer dasar.</li>
+                <li><strong>SMK Negeri 1 Negara</strong> — Sekolah Menengah Kejuruan di bidang Teknologi Informasi, tempat saya memperdalam kemampuan dalam Web Development dan dasar-dasar pemrograman.</li>
+              </ul>
+            </div>
+          `;
+        } else if (page === 'contact') {
+          main.innerHTML = `
+            <h1>Kontak</h1>
+            <div class="card">
+              <p><strong>Email:</strong> restupanjipratama3@email.com</p>
+              <p><strong>Telepon:</strong> 0821-5319-3351</p>
+
+              <div class="social-icons">
+                <p><strong>Media Sosial:</strong></p>
+                <a href="https://wa.me/6282153193351" target="_blank" title="WhatsApp">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/zxyres_/" target="_blank" title="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </div>
+            </div>
+          `;
+        }
+
+        // Hilangkan efek fade
+        main.classList.remove('fade-out');
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
